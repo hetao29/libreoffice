@@ -1,0 +1,8 @@
+bin/*
+*.swp
+go.sum
+.DS_Store
+test/*.png
+proto_doc/
+client_java/target/
+grpc/tmp

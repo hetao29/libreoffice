@@ -1,0 +1,33 @@
+syntax = "proto3";
+package libreoffice;
+
+
+// The greeter service definition.
+service Libreoffice{
+	// Sends a greeting
+	rpc Convert(Request) returns (Response) {
+	}
+}
+
+message Request{
+	//文件名,可选
+	string name = 1;
+	//要转换成的类型,pdf,png/jpg
+	string type= 2;
+	//二进制的文件内容
+	bytes content=3;
+}
+message FileContent{
+	//文件名
+	string name = 1;
+	//文件顺序
+	int32 order = 2;
+	//二进制的文件内容
+	bytes content=3;
+}
+message Response{
+	int32 code = 1;
+	string message = 2;
+	repeated FileContent files=3;
+}
+

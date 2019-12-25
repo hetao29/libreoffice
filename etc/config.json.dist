@@ -1,0 +1,12 @@
+{
+	"listen": {
+		"rpc": ":50000"
+	},
+	"log":{
+		"file":"/tmp/grpc.log",
+		"verbose":false
+	},
+	"proxy": {
+		"rpc": "127.0.0.1:10001"
+	}
+}

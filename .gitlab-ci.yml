@@ -1,0 +1,29 @@
+image: $IMAGE:$VERSION
+
+variables:
+  VERSION: $CI_COMMIT_REF_NAME
+  IMAGE: tools/libreoffice
+  HUB: hub.docker.com
+before_script:
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+stages:
+  - build
+
+job_build_tag:
+  only: 
+    - tags
+  stage: build
+  script:
+    - docker build . -t $IMAGE:$VERSION
+    - docker tag $IMAGE:$VERSION $HUB/$IMAGE:$VERSION
+    - docker push $HUB/$IMAGE:$VERSION
+
+job_build_master:
+  only: 
+    - master
+  stage: build
+  script:
+    - docker build . -t $IMAGE:latest
+    - docker tag $IMAGE:latest $HUB/$IMAGE:latest
+    - docker push $HUB/$IMAGE:latest
