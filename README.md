@@ -1,4 +1,6 @@
-# 说明
+# 说明 
+
+## @deprecated ,change to https://github.com/hetao29/url2image
 
 把 office文件，转换成 png 的grpc 服务，具体的定义参考 proto_src 里的协议
 默认 docker 服务的端口是10001
